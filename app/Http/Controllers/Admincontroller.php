@@ -3,9 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class Admincontroller extends Controller
 {
+
+
+
+    public function __construct(){
+
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +23,9 @@ class Admincontroller extends Controller
     public function index()
     {
         //
-
-        return view('admin.dashboard');
+        $User = User::findOrFail('2');
+        dd($User);
+        return view('admin.dashboard',[$User=>'User']);
     }
 
     /**
