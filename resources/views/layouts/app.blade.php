@@ -14,8 +14,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="icon"  sizes="32x32" type="image/x-icon" href="./images/logo.jpg">
 
-    <!--CSS-->
-    @vite(['resources/sass/app.scss'])
+
 </head>
 <body class="body text-xl">
     
