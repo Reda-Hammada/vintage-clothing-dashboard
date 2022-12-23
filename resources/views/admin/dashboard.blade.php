@@ -3,8 +3,17 @@
 
 
 @section('content')
+<header>
+    <nav>
 
- <h1>Dashboard</h1>
- {{-- <h3>{{ $User['name']  }}</h3> --}}
+    </nav>
+
+</header>
+<main>
+    <section>
+        <h1 class="text-purple-600">Dashboard</h1>
+    </section>
+</main>
+
 
 @endsection

@@ -15,15 +15,12 @@
     <link rel="icon"  sizes="32x32" type="image/x-icon" href="./images/306232569_430145765882111_8714667397772365812_n.jpg">
 
     <!--CSS-->
-    @vite(['resources/sass/app.scss','resources/css/app.css'])
+    @vite(['resources/sass/app.scss'])
 </head>
 <body>
     
 
-        <main >
             @yield('content')
-        </main>
-    </div>
 
 
 

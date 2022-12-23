@@ -23,11 +23,10 @@ class Admincontroller extends Controller
     public function index()
     {
         //
-        $User = User::findOrFail('2');
-        dd($User);
-        return view('admin.dashboard',[$User=>'User']);
-    }
+        $user =  auth()->user();
+        return view('admin.dashboard',['User'=>$user]);
 
+    }
     /**
      * Show the form for creating a new resource.
      *
