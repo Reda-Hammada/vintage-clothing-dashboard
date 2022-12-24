@@ -1,9 +1,9 @@
-@externds('layouts.app')
+@extends('layouts.app')
 
 
-@section('contend')
+@section('content')
+ <h1>Settings</h1>
+@endsection
 
 
 
-
-@endsection 

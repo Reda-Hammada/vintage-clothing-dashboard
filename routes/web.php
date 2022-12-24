@@ -19,4 +19,5 @@ use  App\Http\Controllers\Admincontroller;
 
 Auth::routes();
 
-Route::get('/dashboard', [Admincontroller::class, 'index'])->name('dashboard');
+Route::get('/', [Admincontroller::class, 'index'])->name('/dashboard');
+Route::get('/setting', [Admincontroller::class, 'setting'])->name('/setting');

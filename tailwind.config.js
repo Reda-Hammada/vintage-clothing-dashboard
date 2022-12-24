@@ -5,7 +5,18 @@ module.exports = {
     "./resources/**/*.js",
   ],
   theme: {
-    extend: {},
+
+    extend: {
+        colors:{
+            'nav-color':'#525A65',
+            'hov-color':'#5C6879',
+            'main-color':'#5A5A5A',
+        },
+        fontFamily: {
+            'poppins': ['Poppins', 'sans-serif']
+
+        }
+    },
 
   },
   plugins: [],

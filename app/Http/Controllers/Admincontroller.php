@@ -27,6 +27,18 @@ class Admincontroller extends Controller
         return view('admin.dashboard',['User'=>$user]);
 
     }
+
+    /**
+     * Display user settings.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setting()
+    {
+         return view('admin.settings');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
