@@ -13,7 +13,7 @@
 
 
 </head>
-<body class="font-poppins bg-grey-bg-color">
+<body class="font-poppins bg-grey-color">
 
 
             @yield('content')

@@ -9,10 +9,10 @@
     <header>
 
        {{--    side navbar     --}}
-        <nav class="text-sm	">
-            <div class="bg-nav-color text-white h-screen pt-2.5 pl-4 w-full">
-                <div class="w-full">
-                    <p class='text-center mr-3.5 '>Vintage clothing dashboard</p>
+        <nav class="text-sm	w-[20vw]	">
+            <div class="bg-nav-color text-white h-screen pt-2.5 ">
+                <div class="w-full border-b-2  pb-3">
+                    <h1 class='text-center mr-3.5 p-1 text-2xl'>Vintage clothing</h1>
                 </div>
                 <div class=" mt-8">
 
@@ -43,7 +43,7 @@
                         </div>
                         <div class="w-1/2
                          ">
-                            <a href="{{ route('/setting') }}"><p class="ml-4 cursor-pointer" >Gategories</p></a>
+                            <a href="{{ route('/setting') }}"><p class="ml-4 cursor-pointer" >Categories</p></a>
                         </div>
                     </div>
                     <div class="flex  justify-start p-1 mr-2 mt-4 focus:bg-hov-color  hover:bg-hov-color" >
@@ -85,13 +85,12 @@
         </nav>
         {{--    side navbar     --}}
     </header>
-    <main>
+    <main class="w-full h-12	">
 
-            <div  class="">
-                <nav class="ml-4 w-full mt-2.5  w-4/5 flex justify-evenly">
+            <div  class=" bg-white">
+                <nav class="ml-4 w-full pt-2 pb-5  flex justify-evenly">
                     <div class="w-4/5">
-                        <h1 class=" text-3xl">Dashboard</h1>
-
+                            <input type="search"  placeholder="search for a product"/>
                     </div>
                     <div class="w-1/5">
                         <p>{{$User['name']}}</p>
@@ -99,6 +98,9 @@
                     </div>
                 </nav>
             </div>
+        <section class="mt-10">
+            <h2>Orders</h2>
+        </section>
     </main>
 
 </div>
