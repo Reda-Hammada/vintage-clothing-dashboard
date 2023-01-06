@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title' , 'reset password page')
 @section('content')
 <div class="container h-full w-full">
 
@@ -10,11 +11,11 @@
                         </div>
                     @endif
                 </div>
-                <div class="bg-white w-1/2 ml-auto mr-auto mt-20 h-1/6 text-center">
+                <div class="bg-white w-1/2 ml-auto mr-auto mt-20 h-64 text-center">
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
-                        <div class="mt-4">
+                        <div class="pt-8">
                             <label for="email" class="font-bold">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
@@ -32,7 +33,7 @@
 
                         <div>
                             <div >
-                                <button type="submit" class="bg-nav-color rounded pl-2 pr-2 text-white">
+                                <button type="submit" class="bg-nav-color text-md rounded pl-2 pr-2 text-white">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>
