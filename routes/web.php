@@ -21,4 +21,3 @@ Auth::routes();
 
 Route::get('/', [Admincontroller::class, 'index'])->name('/dashboard');
 Route::get('/setting', [Admincontroller::class, 'setting'])->name('/setting');
-

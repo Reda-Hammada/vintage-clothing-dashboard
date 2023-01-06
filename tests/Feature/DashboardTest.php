@@ -22,9 +22,9 @@ class Testdashboard extends TestCase
 
     public function test_if_dashboardpage_view_isFetched()
     {
-        $response = $this->get('/dashboard');
+        $response = $this->get('/');
         $response->assertStatus(302);
     }
 
-    
+
 }
