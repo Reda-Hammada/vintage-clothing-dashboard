@@ -33,7 +33,7 @@
                         </div>
                         <div class="w-1/2
                          ">
-                            <a href="{{ route('/setting') }}"><p class="ml-4 cursor-pointer" >Products</p></a>
+                            <a href="{{ route('/products') }}"><p class="ml-4 cursor-pointer" >Products</p></a>
                         </div>
                     </div>
                     <div class="flex  justify-start p-1 mr-2 mt-4 focus:bg-hov-color  hover:bg-hov-color" >
@@ -65,7 +65,7 @@
                         </div>
                         <div class="w-1/2
                          ">
-                            <a href="{{ route('/setting') }}">
+                            <a href="{{ route('register') }}">
                                 <p class="ml-4 cursor-pointer" >Team</p>
                             </a>
                         </div>
@@ -98,8 +98,64 @@
                     </div>
                 </nav>
             </div>
-        <section class="mt-10">
-            <h2>Orders</h2>
+        <section class="mt-10 flex w-full justify-between">
+            <div>
+                <h1 class="text-2xl ml-2">Overview</h1>
+            </div>
+            <div class="mr-20 w-36 h-10 bg-main-color  rounded text-white text-center">
+                <button class="pt-2 font-bold">Add Product </button>
+            </div>
+        </section>
+
+        <!--Add product Popup-->
+        <section class="absolute hidden w-full h-full bottom-0 opacity-50  left-0 bg-black ">
+            <div class="bg-white rounded h-1/2 pt-12  opacity-100 w-1/2 mr-auto ml-auto mt-32">
+                <form method="POST">
+                    @csrf
+                   <div class="flex w-[80%] ml-7 justify-between">
+                     <!--Product name -->
+                     <div>
+                        <label class="block font-bold">Product name :</label>
+                        <input type='text'
+                                name='productname'
+                                placeholder="Enter product name"
+                        />
+                     </div>
+                     <!--Product price -->
+                     <div>
+                        <label class="block font-bold">Product Price :</label>
+
+                        <input type='text'
+                               name='number' />
+
+                    </div>
+                   </div>
+                   <div class="">
+                    <label class="block font-bold" >Category:</label>
+                     <select>
+                        <option value='shoes'>
+                            shoes
+                        </option>
+                        <option>
+
+                        </option>
+                        <option>
+
+                        </option>
+                     </select>
+
+
+                   </div>
+                    <!--product description -->
+                    <div>
+                        <label class="block font-bold">Product description :</label>
+
+                        <textarea class="resize-none" name='description '>
+
+                        </textarea>
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
 

@@ -2,6 +2,20 @@
 
 @section('title' , 'reset password page')
 @section('content')
+<header>
+    <nav class="w-full flex  bg-nav-color">
+       <div class="mt-1 mb-1 mr-auto ml-auto">
+        <a class="cursor-pointer"
+           href='{{ route('/dashboard') }}'>
+            <img src='{{ asset('./images/logo.jpg') }}' 
+                 alt='logo' 
+                 class="w-20 rounded-full"
+            />
+        </a>
+       </div>
+       
+    </nav>
+</header>
 <div class="container h-full w-full">
 
                 <div class="card-body">
