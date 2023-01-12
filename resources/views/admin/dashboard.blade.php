@@ -110,8 +110,8 @@
 
         <!--Add product Popup-->
         <section id='addproduct_btn' 
-                class="absolute  w-full h-full bottom-0 opacity-50   left-0 bg-black ">
-            <div class="bg-white rounded  w-[70%]  h-fit  mr-auto ml-auto mt-12">
+                class="absolute  w-full h-full bottom-0 opacity-75  left-0 bg-black ">
+            <div class="bg-white rounded  w-[70%] opacity-100  h-fit  mr-auto ml-auto mt-12">
                 <div class="w-full" >
                     <div class="pl-[95%] pt-2 cursor-pointer hover:text-main-color" id='closeProductForm' >X</div>
                 </div>
@@ -181,12 +181,20 @@
                     <!--Product images -->
                     <div>
                         <label class="block mb-2 ml-7 font-bold">Upload product images:</label>
-                            <input  class=" border w-[30%]  ml-7 mb-12  rounded border-main-color outline-main-color"
+                            <input  class=" border w-[30%]  ml-7 mb-18  rounded border-main-color outline-main-color"
                                     type='file'
-                                    name='images'
+                                    name='images[]'
+                                    multiple
                                     placeholder="Enter product size"
                             />
                     </div>
+                    <div class="w-full pb-8">
+                        <div class="text-center ">
+                            <input  class="bg-main-color cursor-pointer w-[120px] rounded h-[34px] text-white"
+                                   type='submit'
+                                   value="Add project"
+                        </div>
+                    <div>
                 </form>
             </div>
         </section>
