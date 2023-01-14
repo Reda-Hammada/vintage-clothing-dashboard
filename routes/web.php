@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\Admincontroller;
+use  App\Http\Controllers\ProductController;
 
 
 /*
@@ -19,6 +20,10 @@ use  App\Http\Controllers\Admincontroller;
 
 Auth::routes();
 
+// Dashboard pages routes 
 Route::get('/', [Admincontroller::class, 'index'])->name('/dashboard');
 Route::get('/setting', [Admincontroller::class, 'setting'])->name('/setting');
 Route::get('/products',[Admincontroller::class, 'products'])->name('/products');
+
+//product CRUD routes 
+Route::post('/createproduct',[ProductController::class, 'store'])->name('createproduct.store');

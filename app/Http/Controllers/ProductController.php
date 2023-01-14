@@ -14,6 +14,8 @@ class ProductController extends Controller
     public function index()
     {
         //
+     
+        return view('admin.products.products');
     }
 
     /**
@@ -24,6 +26,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -35,6 +38,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+
+            
+           $data = $request->validate([
+            
+            'productname'=>'required|string',
+            'price'=>'required|numeric',
+            'category'=>'required|string',
+            'description'=>'required|string',
+            'images'=>'required|array|image|mimes:'
+            
+           ]);
+           
+          return redirect()->route('/products');  
+         
     }
 
     /**

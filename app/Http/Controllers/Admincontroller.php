@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Category;
 
 class Admincontroller extends Controller
 {
@@ -23,8 +25,16 @@ class Admincontroller extends Controller
     public function index()
     {
         //
+        
+        $categories = Cache::remember(
+          'categories', now()->addHours(24), function(){
+            
+            return Category::All();
+            
+          });
+          
         $user =  auth()->user();
-        return view('admin.dashboard',['User'=>$user]);
+        return view('admin.dashboard',['User'=>$user,'categories' => $categories]);
 
     }
 

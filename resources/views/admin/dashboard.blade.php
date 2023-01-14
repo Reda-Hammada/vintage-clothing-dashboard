@@ -108,15 +108,18 @@
             </div>
         </section>
 
-        <!--Add product Popup-->
-        <section id='addproduct_btn' 
-                class="absolute  w-full h-full bottom-0 opacity-75  left-0 bg-black ">
-            <div class="bg-white rounded  w-[70%] opacity-100  h-fit  mr-auto ml-auto mt-12">
-                <div class="w-full" >
+        <!--Add product Popup-->    
+        <div id='parent_popup' class="absolute  hidden   w-full h-full bottom-0  opacity-75  left-0 bg-black "></div>
+        <section class="hidden"
+                 id='addproduct_btn' >
+            <div 
+               class="bg-white rounde   absolute top-0  w-[70%]   h-fit  mr-auto ml-auto mt-12">
+                <div class="w-full " >
                     <div class="pl-[95%] pt-2 cursor-pointer hover:text-main-color" id='closeProductForm' >X</div>
                 </div>
                 <form class="pt-6 pb-22" 
                       method="POST"
+                      action=" {{ route('createproduct.store')  }}"
                       enctype="multipart/form-data">
                     @csrf
                    <div class="flex w-full ml-7  justify-start">
@@ -134,8 +137,8 @@
                             <label class="block   mb-2 font-bold">Product Price :</label>
 
                             <input  class="w-full h-[29px] pl-2 border rounded border-main-color"
-                                    type='numer'
-                                name='price' />
+                                    type='number'
+                                    name='price' />
 
                         </div>
                    </div>
@@ -143,20 +146,13 @@
                    <div class="flex w-full justifty-start">
                         <div class="ml-7 w-[65%] mt-3 w-full">
                             <label class="block mt-2 mb-2 font-bold" >Category:</label>
-                            <select class="w-[35%] h-[26px] border rounded border-main-color">
+                            <select name='category' class="w-[35%] h-[26px]  border rounded border-main-color">
                                 <option value="">
                                 </option>
-                                <option value='shoes'>
-                                    shoes
-                                </option>
-                                <option>
-        
-                                </option>
-                                <option>
-        
-                                </option>
+                                @foreach ($categories as $category )
+                                    <option value="{{$category['category_name']}}">{{ $category['category_name'] }}</option>
+                                @endforeach
                             </select>
-        
         
                         </div>
                         <!-- Size -->
@@ -183,11 +179,12 @@
                         <label class="block mb-2 ml-7 font-bold">Upload product images:</label>
                             <input  class=" border w-[30%]  ml-7 mb-18  rounded border-main-color outline-main-color"
                                     type='file'
-                                    name='images[]'
+                                    name='images'
                                     multiple
                                     placeholder="Enter product size"
                             />
                     </div>
+                    <!-- add project button -->
                     <div class="w-full pb-8">
                         <div class="text-center ">
                             <input  class="bg-main-color cursor-pointer w-[120px] rounded h-[34px] text-white"
