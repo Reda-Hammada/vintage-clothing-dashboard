@@ -34,7 +34,7 @@ class Admincontroller extends Controller
           });
           
         $user =  auth()->user();
-        return view('admin.dashboard',['User'=>$user,'categories' => $categories]);
+        return view('admin.dashboard',['User'=>$user, 'categories' => $categories]);
 
     }
 
