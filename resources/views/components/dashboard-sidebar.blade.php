@@ -15,7 +15,7 @@
                       </div>
                       <div class="w-1/2
                       ">
-                         <a href="{{ route('/dashboard') }}"><p class="ml-4 cursor-pointer" >Dashboard</p></a>
+                         <a href="{{ route('dashboard') }}"><p class="ml-4 cursor-pointer" >Dashboard</p></a>
                       </div>
                  </div>
                  <div class="flex  justify-start p-1 mr-2 mt-4 focus:bg-hov-color  hover:bg-hov-color" >
@@ -25,7 +25,7 @@
                      </div>
                      <div class="w-1/2
                       ">
-                         <a href="{{ route('/products') }}"><p class="ml-4 cursor-pointer" >Products</p></a>
+                         <a href="{{ route('products') }}"><p class="ml-4 cursor-pointer" >Products</p></a>
                      </div>
                  </div>
                  <div class="flex  justify-start p-1 mr-2 mt-4 focus:bg-hov-color  hover:bg-hov-color" >
@@ -35,7 +35,7 @@
                      </div>
                      <div class="w-1/2
                       ">
-                         <a href="{{ route('/setting') }}"><p class="ml-4 cursor-pointer" >Categories</p></a>
+                         <a href="{{ route('setting') }}"><p class="ml-4 cursor-pointer" >Categories</p></a>
                      </div>
                  </div>
                  <div class="flex  justify-start p-1 mr-2 mt-4 focus:bg-hov-color  hover:bg-hov-color" >
@@ -45,7 +45,7 @@
                      </div>
                      <div class="w-1/2
                       ">
-                         <a href="{{ route('/setting') }}">
+                         <a href="{{ route('setting') }}">
                              <p class="ml-4 cursor-pointer" >Orders</p>
                          </a>
                      </div>
@@ -69,7 +69,7 @@
                      </div>
                      <div class="w-1/2
                       ">
-                         <a href="{{ route('/setting') }}"><p class="ml-4 cursor-pointer" >Settings</p></a>
+                         <a href="{{ route('setting') }}"><p class="ml-4 cursor-pointer" >Settings</p></a>
                      </div>
                  </div>
              </div>

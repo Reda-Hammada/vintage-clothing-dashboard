@@ -1,8 +1,6 @@
 import './bootstrap';
 import '../css/app.css'; 
 
-
-
 // add project form popup form
 const parentPopup = document.querySelector('#parent_popup');
 const addProducttForm = document.querySelector('#addproduct_btn');

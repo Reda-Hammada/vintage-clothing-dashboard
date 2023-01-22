@@ -8,7 +8,7 @@
 <div class="flex flex-row   w-full justify-start ">
    {{-- sidebar component --}}
    <x-dashboard-sidebar   />
-   
+   <h1>Products page</h1>
 
 </div>
 

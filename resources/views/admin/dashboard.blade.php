@@ -34,7 +34,7 @@
                 </div>
                 <form class="pt-6 pb-22" 
                       method="POST"
-                      action=" {{ route('createproduct.store')  }}"
+                      action=" {{ route('createproduct') }}"
                       enctype="multipart/form-data">
                     @csrf
                    <div class="flex w-full ml-7  justify-start">
@@ -43,17 +43,21 @@
                             <label class="block mb-2  font-bold">Product name :</label>
                             <input  class=" border w-[70%] h-[29px] pl-2  rounded border-main-color outline-main-color"
                                     type='text'
+                                    value='{{ old('productname') }}'
                                     name='productname'
                                     placeholder="Enter product name"
                             />
+                            @error('productname')<div class="text-red-500">{{ $message }}</div>@enderror
                         </div>
                         <!--Product price -->
                         <div class="  w-[35%] ">
                             <label class="block   mb-2 font-bold">Product Price :</label>
 
                             <input  class="w-full h-[29px] pl-2 border rounded border-main-color"
-                                    type='number'
+                                    type='text'
                                     name='price' />
+
+                             @error('price')<div class="text-red-500">{{ $message }}</div>@enderror
 
                         </div>
                    </div>
@@ -68,7 +72,8 @@
                                     <option value="{{$category['category_name']}}">{{ $category['category_name'] }}</option>
                                 @endforeach
                             </select>
-        
+                            @error('category')<div class="text-red-500">{{ $message }}</div>@enderror
+
                         </div>
                         <!-- Size -->
                         <div class="w-[40%] mt-3 ">
@@ -78,6 +83,8 @@
                                     name='size'
                                     placeholder="Enter product size"
                             />
+                            @error('size')<div class="text-red-500">{{ $message }}</div>@enderror
+
                         </div>
 
                    </div>
@@ -85,26 +92,32 @@
                     <div class="ml-7 mt-4  w-full ">
                         <label class="block  mb-3 font-bold">Product description :</label>
 
-                        <textarea class="resize-none border border-main-color rounded h-[150px] w-1/2" name='description '>
+                        <textarea class="resize-none border border-main-color rounded h-[150px] w-1/2" 
+                                  name="description">
 
                         </textarea>
+                        @error('description')<div class="text-red-500">{{ $message }}</div>@enderror
+
                     </div>
                     <!--Product images -->
                     <div>
                         <label class="block mb-2 ml-7 font-bold">Upload product images:</label>
                             <input  class=" border w-[30%]  ml-7 mb-18  rounded border-main-color outline-main-color"
                                     type='file'
-                                    name='images'
+                                    name='images' 
                                     multiple
                                     placeholder="Enter product size"
                             />
+                            @error('images')<div class="text-red-500">{{ $message }}</div>@enderror
                     </div>
                     <!-- add project button -->
                     <div class="w-full pb-8">
                         <div class="text-center ">
-                            <input  class="bg-main-color cursor-pointer w-[120px] rounded h-[34px] text-white"
+                            <button  class="bg-main-color cursor-pointer w-[120px] rounded h-[34px] text-white"
                                    type='submit'
-                                   value="Add project"
+                                   >
+                                   Add project
+                                </button>
                         </div>
                     <div>
                 </form>

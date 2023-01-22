@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Image;
 
 class ProductController extends Controller
 {
@@ -37,20 +39,50 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
-            
-           $data = $request->validate([
+        // 
+          //validate product data from the form 
+           $field= $request->validate([
             
             'productname'=>'required|string',
             'price'=>'required|numeric',
-            'category'=>'required|string',
+            'category'=>'required',
+            'size'=>'required|string',
             'description'=>'required|string',
-            'images'=>'required|array|image|mimes:'
+            'images'=>'required|image|mimes:jpe  g,png,jpg'
             
            ]);
-           
-          return redirect()->route('/products');  
+
+
+            /* if all validate then insert data to the database fetch the latest 
+               added product to set the relation between the images and the added product 
+            */
+           if($field):
+            
+                $Product  = new Product();
+                $Product->product_name = $field['productname'];
+                $Product->price = $field['price'];
+                $Product->category_name = $field['category'];
+                $Product->size = $field['size'];
+                $Product->description = $field['description'];
+                $Product->save();
+                
+                $latestProduct = $Product->select('id')->latest()->first();
+                
+                if($request->hasFile('images')):
+                    foreach($request->file('images')  as $image):
+                        $name = $image->getClientoriginalName();
+                        $image->storeAs('public/images',$name);
+                        $ImageModel = new Image();
+                        $ImageModel->image_path	= $image;
+                        $ImageModel->product_id = $latestProduct;
+                        
+                    endforeach;
+        
+                endif;
+             
+               return redirect()->route('products');  
+
+           endif;
          
     }
 
