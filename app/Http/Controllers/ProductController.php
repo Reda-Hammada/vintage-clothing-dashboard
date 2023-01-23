@@ -48,16 +48,15 @@ class ProductController extends Controller
             'category'=>'required',
             'size'=>'required|string',
             'description'=>'required|string',
-            'images'=>'required|image|mimes:jpe  g,png,jpg'
+            'images'=>'required',
+            'images.*'=>'array|mimes:jpeg,png,jpg',
             
            ]);
-
 
             /* if all validate then insert data to the database fetch the latest 
                added product to set the relation between the images and the added product 
             */
-           if($field):
-            
+             
                 $Product  = new Product();
                 $Product->product_name = $field['productname'];
                 $Product->price = $field['price'];
@@ -65,24 +64,32 @@ class ProductController extends Controller
                 $Product->size = $field['size'];
                 $Product->description = $field['description'];
                 $Product->save();
-                
+                 
                 $latestProduct = $Product->select('id')->latest()->first();
-                
-                if($request->hasFile('images')):
-                    foreach($request->file('images')  as $image):
-                        $name = $image->getClientoriginalName();
-                        $image->storeAs('public/images',$name);
+                 
+                     
+                if($request->hasfile('images')):
+                    
+                    foreach($request->file('images')  as $imageFile):
+                        
+
+                        $name = $imageFile->getClientOriginalName();
+                        $path = $imageFile->move(public_path().'/images/', $name);
                         $ImageModel = new Image();
-                        $ImageModel->image_path	= $image;
+                        $ImageModel->image_path	= $path;
                         $ImageModel->product_id = $latestProduct;
+                        $ImageModel->save();
                         
                     endforeach;
-        
+                    
                 endif;
-             
-               return redirect()->route('products');  
 
-           endif;
+          
+
+                return redirect()->route('products')->with('success','project addedd');  
+
+             
+
          
     }
 

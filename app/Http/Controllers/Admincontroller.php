@@ -11,12 +11,31 @@ class Admincontroller extends Controller
 {
 
 
-
+    public $categories;
+    
     public function __construct(){
 
         $this->middleware('auth');
-
+     
     }
+
+
+    /**
+     * asssign categories property and pass it to the method
+     */
+
+     public function fetchAssignCategories()
+     {
+                
+        $categories = Cache::remember(
+            'categories', now()->addHours(24), function(){
+          
+              return Category::All();
+              
+            });
+
+        $this->categories = $categories;
+     }
     /**
      * Display a listing of the resource.
      *
@@ -25,16 +44,11 @@ class Admincontroller extends Controller
     public function index()
     {
         //
-        
-        $categories = Cache::remember(
-          'categories', now()->addHours(24), function(){
-            
-            return Category::All();
-            
-          });
-          
         $user =  auth()->user();
-        return view('admin.dashboard',['User'=>$user, 'categories' => $categories]);
+        
+        $this->fetchAssignCategories();
+        
+        return view('admin.dashboard',['User'=>$user, 'categories' => $this->categories]);
 
     }
 
@@ -51,12 +65,14 @@ class Admincontroller extends Controller
 
     /**
      * Display products.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function products()
-    {
-         return view('admin.products.products');
+    {    
+        $this->fetchAssignCategories();
+
+         return view('admin.products.products', ['categories' => $this->categories]);
     }
 
 

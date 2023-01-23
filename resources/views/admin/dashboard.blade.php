@@ -28,7 +28,7 @@
         <section class="hidden"
                  id='addproduct_btn' >
             <div 
-               class="bg-white rounde   absolute top-0  w-[70%]   h-fit  mr-auto ml-auto mt-12">
+               class="bg-white rounded mt-[7%]    absolute top-0  w-[70%]   h-fit  mr-auto ml-auto mt-12">
                 <div class="w-full " >
                     <div class="pl-[95%] pt-2 cursor-pointer hover:text-main-color" id='closeProductForm' >X</div>
                 </div>
@@ -55,6 +55,7 @@
 
                             <input  class="w-full h-[29px] pl-2 border rounded border-main-color"
                                     type='text'
+                                    value="{{ old('price') }}"
                                     name='price' />
 
                              @error('price')<div class="text-red-500">{{ $message }}</div>@enderror
@@ -65,7 +66,7 @@
                    <div class="flex w-full justifty-start">
                         <div class="ml-7 w-[65%] mt-3 w-full">
                             <label class="block mt-2 mb-2 font-bold" >Category:</label>
-                            <select name='category' class="w-[35%] h-[26px]  border rounded border-main-color">
+                            <select name='category'  class="w-[35%] h-[26px]  border rounded border-main-color">
                                 <option value="">
                                 </option>
                                 @foreach ($categories as $category )
@@ -80,6 +81,7 @@
                             <label class="block mb-2  font-bold">Size :</label>
                             <input  class=" border w-[70%] h-[29px] pl-2  rounded border-main-color outline-main-color"
                                     type='text'
+                                    value="{{ old('size') }}"
                                     name='size'
                                     placeholder="Enter product size"
                             />
@@ -93,8 +95,9 @@
                         <label class="block  mb-3 font-bold">Product description :</label>
 
                         <textarea class="resize-none border border-main-color rounded h-[150px] w-1/2" 
-                                  name="description">
-
+                                  name="description"
+                                  >
+                               {{ old('description') }}
                         </textarea>
                         @error('description')<div class="text-red-500">{{ $message }}</div>@enderror
 
@@ -104,7 +107,7 @@
                         <label class="block mb-2 ml-7 font-bold">Upload product images:</label>
                             <input  class=" border w-[30%]  ml-7 mb-18  rounded border-main-color outline-main-color"
                                     type='file'
-                                    name='images' 
+                                    name='images[]' 
                                     multiple
                                     placeholder="Enter product size"
                             />
