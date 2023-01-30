@@ -1,20 +1,18 @@
-import './bootstrap';
-import '../css/app.css'; 
+import "./bootstrap";
+import "../css/app.css";
 
 // add project form popup form
-const parentPopup = document.querySelector('#parent_popup');
-const addProducttForm = document.querySelector('#addproduct_btn');
-const addProductBtn = document.querySelector('#addProductBtn');
-const closeProductForm = document.querySelector('#closeProductForm');
+const parentPopup = document.querySelector("#parent_popup");
+const addForm = document.querySelector("#form");
+const addBtn = document.querySelector("#addBtn");
+const closeForm = document.querySelector("#closeForm");
 
-addProductBtn.onclick = function(){
-    
-     parentPopup.style.display = 'flex'
-     addProducttForm.style.display = 'flex' 
-}
+addBtn.onclick = function () {
+    parentPopup.style.display = "flex";
+    addForm.style.display = "flex";
+};
 
-closeProductForm.onclick = function(){
-    
-    parentPopup.style.display = 'none'
-    addProducttForm.style.display ='none'
-}
+closeForm.onclick = function () {
+    parentPopup.style.display = "none";
+    addForm.style.display = "none";
+};

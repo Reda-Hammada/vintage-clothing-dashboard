@@ -75,6 +75,19 @@ class Admincontroller extends Controller
          return view('admin.products.products', ['categories' => $this->categories]);
     }
 
+       /**
+     * Display categories.
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function categories()
+    {    
+        $this->fetchAssignCategories();
+
+         return view('admin.categories.categories', ['categories' => $this->categories]);
+    }
+
+
 
 
     /**

@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\Admincontroller;
+use App\Https\Controllers\LogoutController;
 use  App\Http\Controllers\ProductController;
+use  App\Http\Controllers\Categorycontroller;
+
 
 
 /*
@@ -19,11 +22,18 @@ use  App\Http\Controllers\ProductController;
 
 
 Auth::routes();
+// Log out routes 
+Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
 
 // Dashboard pages routes 
 Route::get('/', [Admincontroller::class, 'index'])->name('dashboard');
 Route::get('/setting', [Admincontroller::class, 'setting'])->name('setting');
 Route::get('/products',[Admincontroller::class, 'products'])->name('products');
+Route::get('/categories',[Admincontroller::class, 'categories'])->name('categories');
 
 //product CRUD routes 
 Route::post('/createproduct', [ProductController::class, 'store'])->name('createproduct');
+
+
+//category CRUD routes 
+Route::post('/createcategory', [Categorycontroller::class, 'storeCategory'])->name('createcategory'); 

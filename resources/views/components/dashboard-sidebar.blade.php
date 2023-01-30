@@ -35,7 +35,7 @@
                      </div>
                      <div class="w-1/2
                       ">
-                         <a href="{{ route('setting') }}"><p class="ml-4 cursor-pointer" >Categories</p></a>
+                         <a href="{{ route('categories') }}"><p class="ml-4 cursor-pointer" >Categories</p></a>
                      </div>
                  </div>
                  <div class="flex  justify-start p-1 mr-2 mt-4 focus:bg-hov-color  hover:bg-hov-color" >

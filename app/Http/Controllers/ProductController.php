@@ -3,23 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
 use App\Models\Image;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-     
-        return view('admin.products.products');
-    }
+    public function __construct(){
+        $this->middleware('auth');
 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -41,43 +34,39 @@ class ProductController extends Controller
     {
         // 
           //validate product data from the form 
-           $field= $request->validate([
+           $request->validate([
             
             'productname'=>'required|string',
             'price'=>'required|numeric',
             'category'=>'required',
             'size'=>'required|string',
             'description'=>'required|string',
-            'images'=>'required',
-            'images.*'=>'array|mimes:jpeg,png,jpg',
+            'images.*'=>'image|array|',
+            'images'=>'required'
             
            ]);
-
             /* if all validate then insert data to the database fetch the latest 
                added product to set the relation between the images and the added product 
             */
              
                 $Product  = new Product();
-                $Product->product_name = $field['productname'];
-                $Product->price = $field['price'];
-                $Product->category_name = $field['category'];
-                $Product->size = $field['size'];
-                $Product->description = $field['description'];
+                $Product->product_name = $request->productname;
+                $Product->price = $request->price;
+                $Product->category_name = $request->category;
+                $Product->size = $request->size;
+                $Product->description = $request->description;
                 $Product->save();
                  
-                $latestProduct = $Product->select('id')->latest()->first();
-                 
-                     
-                if($request->hasfile('images')):
-                    
+                $latestProductId = $Product->select('id')->latest()->first();
+                if($request->hasFile('images')):
                     foreach($request->file('images')  as $imageFile):
                         
 
-                        $name = $imageFile->getClientOriginalName();
-                        $path = $imageFile->move(public_path().'/images/', $name);
+                        $path = $imageFile->store('images');
+                        dd($path);
                         $ImageModel = new Image();
                         $ImageModel->image_path	= $path;
-                        $ImageModel->product_id = $latestProduct;
+                        $ImageModel->product_id = $latestProductId;
                         $ImageModel->save();
                         
                     endforeach;
