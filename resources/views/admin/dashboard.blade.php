@@ -31,8 +31,8 @@
         <!--Add product Popup-->    
         <div id='parent_popup' class="absolute {{ $isError ? 'flex': 'hidden'}} w-full h-full bottom-0  opacity-75  left-0 bg-black "
                ></div>
-        <section class="{{ $isError ? 'flex': 'hidden' }}"
-                 id='addForm' >
+        <section class='{{ $isError ? 'flex': 'hidden'}}'
+                 id='form' >
             <div 
                class="bg-white rounded mt-[7%]    absolute top-0  w-[70%]   h-fit  mr-auto ml-auto mt-12">
                 <div class="w-full " >

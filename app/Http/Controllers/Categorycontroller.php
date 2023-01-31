@@ -26,8 +26,9 @@ class Categorycontroller extends Controller
          $categoryModel->category_name = $request['categoryname'];
          $categoryModel->save();
          
+         session()->flash('success', 'Category added successfully!');
 
-        return redirect()->route('categories')->with('success','project addedd');
+        return redirect()->back();
         
     }
 }

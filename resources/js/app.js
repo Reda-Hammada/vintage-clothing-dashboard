@@ -16,3 +16,14 @@ closeForm.onclick = function () {
     parentPopup.style.display = "none";
     addForm.style.display = "none";
 };
+
+
+ closeForm.addEventListener('click',()=>{
+   const success = document.querySelector('#successMessage')
+   success.style.transition = 'opacity 1s';
+   setTimeout(function() {
+    success.style.opacity = "0";
+  }, 50);
+  
+
+ })
