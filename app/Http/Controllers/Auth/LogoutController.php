@@ -10,6 +10,6 @@ class LogoutController extends Controller{
     public function logout()
     {
         Auth::logout();
-        return redirect('dashboard');
+        return to_route('dashboard');
     }
 }

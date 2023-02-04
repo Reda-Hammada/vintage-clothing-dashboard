@@ -37,3 +37,4 @@ Route::post('/createproduct', [ProductController::class, 'store'])->name('create
 
 //category CRUD routes 
 Route::post('/createcategory', [Categorycontroller::class, 'storeCategory'])->name('createcategory'); 
+Route::delete('/delete/{id}',[Categorycontroller::class ,'deleteCategory'])->name('category.delete');

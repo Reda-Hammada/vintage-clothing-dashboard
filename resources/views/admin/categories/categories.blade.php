@@ -39,10 +39,27 @@
         <section class="w-[80%] mr-auto ml-auto mt-32">
             <div class="flex justify-start  flex-wrap">
                 @foreach($categories as $category)
-                <div class="bg-main-color ml-[7%] w-[15%] h-[80px] pt-6 text-white text-center rounded mt-6 font-bold ">
-                    <p>{{ $category['category_name'] }}</p>
+                <div class="bg-white ml-[7%] w-[15%] h-[80px]  text-center rounded mt-6 font-bold ">
+                    <div class="pl-[86%] pt-1 cursor-pointer">
+                        <img  src="{{ asset('./images/dotsetting.png') }}" />
+                    </div>
+                    <div class="cursor-pointer">
+                        <p>{{ $category['category_name'] }}</p>
+                    </div>
+                </div>
+                <div class='bg-gray-300 w-[10%] absolute h-[90px] text-center block rounded'>
+                  <div class="w-[50%] mr-auto ml-auto">
+                    <button class="bg-main-color w-[120px] rounded mt-3 mb-3 text-white block font-bold">edit</button>
+                        <form method="POST" action={{ route('category.delete',$category['id']) }}>
+                            @method('delete')
+                            @csrf
+                           <input class="bg-red-500 w-[120px] rounded  mt-3  block text-white font-bold" type='submit' value='delete' />
+                        </form>
+                     
+                  </div>
                 </div>
                 @endforeach
+
             </div>
         </section>
     </div>
@@ -84,7 +101,7 @@
                  </div>
              
              <!-- add project button -->
-             <div class="w-full pb-8 mt-9">
+             <div class="w-full pb-8 mt-7">
                  <div class="text-center ">
                      <button  class="bg-main-color cursor-pointer w-[120px] rounded h-[34px] text-white"
                             type='submit'

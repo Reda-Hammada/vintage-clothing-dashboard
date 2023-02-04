@@ -14,7 +14,7 @@
       </div>
       <div class="mr-20 w-36 h-10 bg-main-color  rounded text-white text-center">
           <button class="pt-2"
-                  id='addProductBtn'>Add Product </button>
+                  id='addBtn'>Add Product </button>
       </div>
    </section>
    
@@ -24,11 +24,11 @@
                 <!--Add product Popup-->    
             <div id='parent_popup' class="absolute  hidden   w-full h-full bottom-0  opacity-75  left-0 bg-black "></div>
             <section class="hidden"
-                    id='addproduct_btn' >
+                    id='form' >
                 <div 
                     class="bg-white rounded mt-[7%] absolute top-0  w-[75%]   h-fit  mr-auto ml-auto mt-12">
                     <div class="w-full " >
-                        <div class="pl-[95%] pt-2 cursor-pointer hover:text-main-color" id='closeProductForm' >X</div>
+                        <div class="pl-[95%] pt-2 cursor-pointer hover:text-main-color" id='closeForm' >X</div>
                     </div>
                     <form class="pt-6 pb-22" 
                             method="POST"
