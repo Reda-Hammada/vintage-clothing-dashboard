@@ -75,7 +75,7 @@ class ProductController extends Controller
 
           
 
-                return redirect()->route('products')->with('success','project addedd');  
+                return redirect()->route('products')->xc  ;  
 
              
 

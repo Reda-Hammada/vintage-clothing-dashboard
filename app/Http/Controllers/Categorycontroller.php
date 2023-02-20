@@ -13,7 +13,8 @@ class Categorycontroller extends Controller
 
 
     private function clearCache(){
-          $categoryModel = new Category();
+      
+        $categoryModel = new Category();
          // Invalidate cache key 
          Cache::forget('categories');
          // fetch categories  and store them in the cache again
@@ -46,26 +47,52 @@ class Categorycontroller extends Controller
     }
 
     /**
+     * delete category
+     * 
      * @param int $id
      * @param Illuminate\Http\Request $request
      * @return Illuminate\Http\Response 
      * 
-     */
+     */ 
 
-     public function deleteCategory($id, Request $request){
+     public function deleteCategory($id, Request $request)
+     {
          
-                $categoryModel = new Category();
+        $categoryModel = new Category();
             
-                $categoryModel->where('id', $id)->delete();
+        $categoryModel->where('id', $id)->delete();
                 
-                $this->clearCache();
+        $this->clearCache();
 
-                session()->flash('success', 'Category deleted successfully!');
+        session()->flash('success', 'Category deleted successfully!');
 
-                return redirect()->back();
-
-             
-                
+        return redirect()->back();         
       
      }
+
+
+     /**
+      * 
+      */
+
+     /**
+      * update a category
+      *
+      * @param int $id
+      * @param Illuminate\Http\Request $request
+      * @return Illuminate\Http\Response
+      *
+      */
+
+      public function updateCategory($id, Request $request)
+      {
+        
+        if($request):
+            $request->validate([
+              ''=>'',
+              ''=>'',
+            ]);
+
+        endif;
+      }
 }
