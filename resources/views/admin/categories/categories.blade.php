@@ -155,7 +155,7 @@
                 </div>
                 <form class="pt-6 pb-22" 
                 method="POST"
-                action=" {{ route('category.update',$category['id'])}}" >
+                action="" >
                 @method('patch')
                 @csrf
                 <div class=" w-full ml-7  justify-start">

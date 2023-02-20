@@ -10,15 +10,19 @@ class Categorycontroller extends Controller
 {
     //
 
+    protected $categoryModel;
 
+    public function __construct(Category $categoryModel){
 
-    private function clearCache(){
+      $this->categoryModel = $categoryModel;
+    }
+
+    private function clearCache(){ 
       
-        $categoryModel = new Category();
          // Invalidate cache key 
          Cache::forget('categories');
          // fetch categories  and store them in the cache again
-         $categories = $categoryModel->all();
+         $categories =  $this->categoryModel->all();
          cache::put('categories', $categories,  now()->addHours(24));
     }
 
@@ -34,9 +38,9 @@ class Categorycontroller extends Controller
             'categoryname'=> 'required|string',
         ]);
         
-         $categoryModel = new Category();
-         $categoryModel->category_name = $request['categoryname'];
-         $categoryModel->save();
+        
+        $this->categoryModel->category_name = $request['categoryname'];
+        $this->categoryModel->save();
 
          $this->clearCache();
          
@@ -58,9 +62,8 @@ class Categorycontroller extends Controller
      public function deleteCategory($id, Request $request)
      {
          
-        $categoryModel = new Category();
             
-        $categoryModel->where('id', $id)->delete();
+        $this->categoryModel->where('id', $id)->delete();
                 
         $this->clearCache();
 
@@ -87,10 +90,17 @@ class Categorycontroller extends Controller
       public function updateCategory($id, Request $request)
       {
         
+        if(isset($id)):
+            $this->categoryModel->where('id', $id)->first();
+
+            return view('categories.categories',compact('categoryEdit'));
+        endif;
+
+        
         if($request):
             $request->validate([
-              ''=>'',
-              ''=>'',
+              'category_name'=>'string|required',
+            
             ]);
 
         endif;

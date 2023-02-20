@@ -26,9 +26,7 @@ closeForm.addEventListener("click", () => {
 });
 
 // toggle setting category
-
 const settingCategory = document.querySelectorAll(".settingCategory");
-
 settingCategory.forEach(settingCategory =>{
 
   const editDeleteContainer = settingCategory.nextElementSibling;
@@ -43,11 +41,9 @@ settingCategory.forEach(settingCategory =>{
 });
 
 //update form 
-
 const updatePopUpUltimateContainer = document.querySelector('#editUltimate_container');
 const updatePopUpContainer = document.querySelector('#edit_container'); 
 const editButton = document.querySelector('#editButton');
-
 editButton.addEventListener('click', function(){
    
     updatePopUpUltimateContainer.style.display = 'block';
@@ -55,7 +51,6 @@ editButton.addEventListener('click', function(){
 });
 
 const closeFormEdit = document.querySelector('#closeFormEdit');
-
 closeFormEdit.addEventListener('click', function(){
     
     updatePopUpUltimateContainer.style.display = 'none';
