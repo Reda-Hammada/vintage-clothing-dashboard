@@ -17,7 +17,8 @@ class Categorycontroller extends Controller
       $this->categoryModel = $categoryModel;
     }
 
-    private function clearCache(){ 
+    private function clearCache():void
+    {
       
          // Invalidate cache key 
          Cache::forget('categories');
@@ -75,10 +76,6 @@ class Categorycontroller extends Controller
 
 
      /**
-      * 
-      */
-
-     /**
       * update a category
       *
       * @param int $id
@@ -94,6 +91,7 @@ class Categorycontroller extends Controller
             $this->categoryModel->where('id', $id)->first();
 
             return view('categories.categories',compact('categoryEdit'));
+            
         endif;
 
         
@@ -105,4 +103,22 @@ class Categorycontroller extends Controller
 
         endif;
       }
+
+      /**
+       * @param string $categoryName 
+       * @return Illuminate\Http\Respone
+       *
+       */
+      
+       // fetch products by category 
+       public function fetchProductsByCategoryName($categoryName){
+          
+          $products = $this->categoryModel
+                      ->where('category_name',$categoryName)
+                      ->get();
+
+          return view('admin.categories.productByCategory',['products'=> $products]);
+          
+       }
+   
 }

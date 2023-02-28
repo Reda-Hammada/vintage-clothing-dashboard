@@ -41,8 +41,9 @@
                 @foreach($categories as $category)
                     <div class="bg-white ml-[7%] w-[15%] h-[80px]  text-center rounded mt-6 font-bold ">
                         <div 
-                             class="pl-[86%] pt-1 cursor-pointer settingCategory">
-                            <img  src="{{ asset('./images/dotsetting.png') }}" />
+                             class="pl-[86%] pt-1 settingCategory">
+                            <img  class="cursor-pointer"
+                                 src="{{ asset('./images/dotsetting.png') }}" />
                         </div>
                         <div id=''
                         class='bg-gray-300 editDeleteContainer w-[5.5%] pt-1 ml-32 hidden  absolute h-[90px] text-center block rounded'>
@@ -61,8 +62,12 @@
                             
                         </div>
                     </div>
-                        <div class="cursor-pointer">
-                            <p>{{ $category['category_name'] }}</p>
+                        <div class="">
+                            <p class="cursor-pointer">
+                                <a href="{{ route('productsByCategory',$category['category_name']) }}">
+                                    {{ $category['category_name'] }}
+                                </a>
+                             </p>
                         </div>
                       
                     </div>
