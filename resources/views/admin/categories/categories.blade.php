@@ -48,9 +48,10 @@
                         <div id=''
                         class='bg-gray-300 editDeleteContainer w-[5.5%] pt-1 ml-32 hidden  absolute h-[90px] text-center block rounded'>
                         <div class="w-[71%] mr-auto ml-auto">
-                                <form method="POST" action={{ route('category.delete',$category['id']) }}> 
-                                    @method('delete')
+                                <form method="GET" action={{ route('category.delete',$category['id']) }}> 
                                     @csrf
+                                    @method('PATCH')
+
                                 <input class="bg-red-500 cursor-pointer w-[80px] rounded  mt-3  block text-white font-bold" type='submit' value='delete' />
                                 </form>
                               
@@ -159,9 +160,9 @@
                 </div>
                 </div>
                 <form class="pt-6 pb-22" 
-                method="POST"
+                method="PATCH"
                 action="" >
-                @method('patch')
+                @method('PATCH')
                 @csrf
                 <div class=" w-full ml-7  justify-start">
                     <!--Category  name -->
@@ -169,7 +170,7 @@
                         <label class="block mb-2  font-bold">Category name :</label>
                         <input  class=" border w-[70%] h-[29px] pl-2  rounded border-main-color outline-main-color"
                                 type='text' 
-                                value='edit' />
+                                value='' />
                         @error('categoryname')<div class="text-red-500">{{ $message }}</div>@enderror
                     </div>
                     

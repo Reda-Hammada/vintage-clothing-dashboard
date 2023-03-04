@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Models\Category;
+use App\Models\Product;
 
 class Categorycontroller extends Controller
 {
@@ -13,8 +14,10 @@ class Categorycontroller extends Controller
     protected $categoryModel;
 
     public function __construct(Category $categoryModel){
-
+ 
       $this->categoryModel = $categoryModel;
+      $this->middleware('auth');
+
     }
 
     private function clearCache():void
@@ -60,7 +63,7 @@ class Categorycontroller extends Controller
      * 
      */ 
 
-     public function deleteCategory($id, Request $request)
+     public function deleteCategory(int $id, Request $request)
      {
          
             
@@ -84,7 +87,7 @@ class Categorycontroller extends Controller
       *
       */
 
-      public function updateCategory($id, Request $request)
+      public function updateCategory(int $id, Request $request)
       {
         
         if(isset($id)):
@@ -111,10 +114,10 @@ class Categorycontroller extends Controller
        */
       
        // fetch products by category 
-       public function fetchProductsByCategoryName($categoryName){
+       public function fetchProductsByCategoryName(String $categoryName){
           
-          $products = $this->categoryModel
-                      ->where('category_name',$categoryName)
+          $productModel = new Product();
+          $products = $productModedl->where('category_name',$categoryName)
                       ->get();
 
           return view('admin.categories.productByCategory',['products'=> $products]);
