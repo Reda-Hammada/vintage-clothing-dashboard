@@ -39,27 +39,35 @@
         <section class="w-[80%] mr-auto ml-auto mt-32">
             <div class="flex justify-start  flex-wrap">
                 @foreach($categories as $category)
+                    
                     <div class="bg-white ml-[7%] w-[15%] h-[80px]  text-center rounded mt-6 font-bold ">
                         <div 
                              class="pl-[86%] pt-1 settingCategory">
                             <img  class="cursor-pointer"
                                  src="{{ asset('./images/dotsetting.png') }}" />
                         </div>
+                        {{-- Edit && delete button  --}}
                         <div id=''
                         class='bg-gray-300 editDeleteContainer w-[5.5%] pt-1 ml-32 hidden  absolute h-[90px] text-center block rounded'>
                         <div class="w-[71%] mr-auto ml-auto">
-                                <form method="GET" action={{ route('category.delete',$category['id']) }}> 
-                                    @csrf
-                                    @method('PATCH')
-
-                                <input class="bg-red-500 cursor-pointer w-[80px] rounded  mt-3  block text-white font-bold" type='submit' value='delete' />
-                                </form>
-                              
+                               {{-- Edit --}}
                                 <button id='editButton'
-                                       class="bg-main-color w-[80px] cursor-pointer rounded  mt-3  block text-white font-bold">
-                                       <a href='{{ route('category.update',$category['id']) }}'>edit</a>
-                                </button>
-
+                                    class="bg-main-color w-[80px] cursor-pointer rounded  mt-3  block text-white font-bold">
+                                    edit 
+                                </button> 
+                                       
+                                {{-- delete --}}
+                                <form method='POST'
+                                      action='{{ route('category.delete',$category['id'])}}'>
+                                      @method('DELETE')
+                                      @csrf
+                                       
+                                     <input class="bg-red-500 w-[80px] cursor-pointer rounded  mt-3  block text-white font-bold"
+                                                   type='submit' 
+                                                   value="delete"
+                                            />
+                                     </form>
+                               
                             
                         </div>
                     </div>
@@ -72,12 +80,14 @@
                         </div>
                       
                     </div>
+                  
 
                 @endforeach
 
             </div>
         </section>
     </div>
+    {{-- add form  --}}
     @php $isErrorAdd = false @endphp 
 
     @if($errors->any())
@@ -160,10 +170,10 @@
                 </div>
                 </div>
                 <form class="pt-6 pb-22" 
-                method="PATCH"
-                action="" >
-                @method('PATCH')
-                @csrf
+                      method="GET"
+                      />
+                      @method('PATCH')
+                      @csrf
                 <div class=" w-full ml-7  justify-start">
                     <!--Category  name -->
                     <div class="w-full text-center ">
@@ -171,7 +181,11 @@
                         <input  class=" border w-[70%] h-[29px] pl-2  rounded border-main-color outline-main-color"
                                 type='text' 
                                 value='' />
-                        @error('categoryname')<div class="text-red-500">{{ $message }}</div>@enderror
+                        @error('categoryname')
+                            <div class="text-red-500">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     
                     <div class='mt-6'>
@@ -185,8 +199,7 @@
             
                 </form>
             </div>
-         </div>
-    {{-- edit form --}}
+         </div> 
 
 
 </div>

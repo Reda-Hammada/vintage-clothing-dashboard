@@ -27,35 +27,34 @@ closeForm.addEventListener("click", () => {
 
 // toggle setting category
 const settingCategory = document.querySelectorAll(".settingCategory");
-settingCategory.forEach(settingCategory =>{
-
-  const editDeleteContainer = settingCategory.nextElementSibling;
-  settingCategory.addEventListener("click", function () {
-      if (editDeleteContainer.style.display == "block") {
-          editDeleteContainer.style.display = "none";
-      } else {
-          editDeleteContainer.style.display = "block";
-      }
-  });
-
+settingCategory.forEach((settingCategory) => {
+    const editDeleteContainer = settingCategory.nextElementSibling;
+    settingCategory.addEventListener("click", function () {
+        if (editDeleteContainer.style.display == "block") {
+            editDeleteContainer.style.display = "none";
+        } else {
+            editDeleteContainer.style.display = "block";
+        }
+    });
 });
 
-//update form 
-const updatePopUpUltimateContainer = document.querySelector('#editUltimate_container');
-const updatePopUpContainer = document.querySelector('#edit_container'); 
-const editButton = document.querySelector('#editButton');
-editButton.addEventListener('click', function(){
-   
-    updatePopUpUltimateContainer.style.display = 'block';
-    updatePopUpContainer.style.display = 'block';
+//update form
+const updatePopUpUltimateContainer = document.querySelector(
+    "#editUltimate_container"
+);
+const updatePopUpContainer = document.querySelector("#edit_container");
+// open form
+const editButton = document.querySelectorAll("#editButton");
+editButton.forEach((editButton) => {
+    editButton.addEventListener("click", function () {
+        updatePopUpContainer.style.display = "block";
+        updatePopUpUltimateContainer.style.display = "block";
+    });
 });
 
-const closeFormEdit = document.querySelector('#closeFormEdit');
-closeFormEdit.addEventListener('click', function(){
-    
-    updatePopUpUltimateContainer.style.display = 'none';
-    updatePopUpContainer.style.display = 'none';
-
+//close form
+const closeFormEdit = document.querySelector("#closeFormEdit");
+closeFormEdit.addEventListener("click", function () {
+    updatePopUpUltimateContainer.style.display = "none";
+    updatePopUpContainer.style.display = "none";
 });
-
-
