@@ -39,7 +39,8 @@
         <section class="w-[80%] mr-auto ml-auto mt-32">
             <div class="flex justify-start  flex-wrap">
                 @foreach($categories as $category)
-                    
+                @php  passCategory($category['category_name'],$category['id']) @endphp
+
                     <div class="bg-white ml-[7%] w-[15%] h-[80px]  text-center rounded mt-6 font-bold ">
                         <div 
                              class="pl-[86%] pt-1 settingCategory">
@@ -55,7 +56,7 @@
                                     class="bg-main-color w-[80px] cursor-pointer rounded  mt-3  block text-white font-bold">
                                     edit 
                                 </button> 
-                                       
+
                                 {{-- delete --}}
                                 <form method='POST'
                                       action='{{ route('category.delete',$category['id'])}}'>
@@ -180,7 +181,7 @@
                         <label class="block mb-2  font-bold">Category name :</label>
                         <input  class=" border w-[70%] h-[29px] pl-2  rounded border-main-color outline-main-color"
                                 type='text' 
-                                value='' />
+                                value='@php echo CategoryId() @endphp' />
                         @error('categoryname')
                             <div class="text-red-500">
                                 {{ $message }}
